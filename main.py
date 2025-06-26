@@ -1,9 +1,10 @@
 import discord
 import os
-from keep_alive import keep_alive
 
+# أخذ التوكن من المتغير البيئي في Railway
 TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
 
+# تفعيل صلاحيات قراءة الرسائل
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
@@ -20,8 +21,7 @@ async def on_message(message):
     if message.content.lower() == "!ping":
         await message.channel.send("🏓 Pong!")
 
-    if message.content.lower() == "!hi":
-        await message.channel.send(f"👋 Hello, {message.author.name}!")
+    elif message.content.lower() == "!hello":
+        await message.channel.send(f"👋 أهلاً، {message.author.name}!")
 
-keep_alive()
 client.run(TOKEN)
